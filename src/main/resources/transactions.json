@@ -1,0 +1,32 @@
+[
+  {
+    "type": "Expense",
+    "date": "2024-08-03",
+    "amount": 43.0,
+    "note": "Dinner for 3 persons"
+  },
+  {
+    "type": "Income",
+    "date": "2024-08-01",
+    "amount": 1430.0,
+    "note": "Income from insurance"
+  },
+  {
+    "type": "Expense",
+    "date": "2024-08-05",
+    "amount": 98.0,
+    "note": "Fifa 25 pre-order"
+  },
+  {
+    "type": "Expense",
+    "date": "2024-08-04",
+    "amount": 140.0,
+    "note": "Playstation Extra - year substriction"
+  },
+  {
+    "type": "Expense",
+    "date": "2024-08-11",
+    "amount": 80.0,
+    "note": "Taxes for life"
+  }
+]
