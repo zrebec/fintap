@@ -1,46 +1,43 @@
 package sk.zrebec.financecontroller.model;
 
-import java.time.LocalDate;
+import java.sql.Date;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Inheritance;
-import jakarta.persistence.InheritanceType;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Positive;
+import jakarta.persistence.Table;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
-@JsonSubTypes({
-        @JsonSubTypes.Type(value = Expense.class, name = "Expense"),
-        @JsonSubTypes.Type(value = Income.class, name = "Income")
-})
+@Table(name = "transactions")
 public class Transaction {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Schema(hidden = true)
     private Long id;
 
-    @JsonFormat(pattern = "yyyy-MM-dd")
-    @Schema(description = "The transaction date in YYYY-MM-DD format", example = "2024-08-01")
-    @NotNull(message = "Date is required")
-    private LocalDate date;
+    @JsonProperty("id_category")
+    private Long IdCategory;
 
-    @Schema(description = "The transaction amount", example = "150.00")
-    @Positive(message = "Amount must be positive")
-    private double amount;
+    @JsonProperty("title")
+    private String Title;
 
-    @Schema(description = "The for the transaction", example = "Grocerie shopping")
-    private String note;
+    @JsonProperty("price")
+    private Double Price;
+
+    @JsonProperty("id_frequency")
+    private Integer IdFrequency;
+
+    @JsonProperty("id_status")
+    private Integer IdStatus;
+
+    @JsonProperty("next_payment")
+    private Date Next_Payment;
+
+    @JsonProperty("commentary")
+    private String Commentary;
 
     public Long getId() {
         return this.id;
@@ -50,28 +47,59 @@ public class Transaction {
         this.id = id;
     }
 
-    public LocalDate getDate() {
-        return this.date;
+    public Long getIdCategory() {
+        return this.IdCategory;
     }
 
-    public void setDate(LocalDate date) {
-        this.date = date;
+    public void setIdCategory(Long ID_Category) {
+        this.IdCategory = ID_Category;
     }
 
-    public double getAmount() {
-        return this.amount;
+    public String getTitle() {
+        return this.Title;
     }
 
-    public void setAmount(double amount) {
-        this.amount = amount;
+    public void setTitle(String Title) {
+        this.Title = Title;
     }
 
-    public String getNote() {
-        return this.note;
+    public double getPrice() {
+        return this.Price;
     }
 
-    public void setNote(String note) {
-        this.note = note;
+    public void setPrice(double Price) {
+        this.Price = Price;
     }
 
+    public Integer getIdFrequency() {
+        return this.IdFrequency;
+    }
+
+    public void setIdFrequency(Integer IdFrequency) {
+        this.IdFrequency = IdFrequency;
+    }
+
+    public Integer getIdStatus() {
+        return this.IdStatus;
+    }
+
+    public void setIdStatus(Integer IdStatus) {
+        this.IdStatus = IdStatus;
+    }
+
+    public Date getNextPayment() {
+        return this.Next_Payment;
+    }
+
+    public void setNextPayment(Date nextPayment) {
+        this.Next_Payment = nextPayment;
+    }
+
+    public String getCommentary() {
+        return this.Commentary;
+    }
+
+    public void setCommentary(String Commentary) {
+        this.Commentary = Commentary;
+    }
 }

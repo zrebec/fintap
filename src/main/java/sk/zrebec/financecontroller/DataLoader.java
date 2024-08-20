@@ -19,12 +19,11 @@ import sk.zrebec.financecontroller.service.TransactionService;
 public class DataLoader implements CommandLineRunner {
 
     @Autowired
-    private TransactionService transactionService;
+    private TransactionService transactionsService;
 
     @Override
     public void run(String... args) throws Exception {
-        transactionService.deleteAllTransactions();
-        transactionService.resetTransactionSequence();
+        transactionsService.deleteAllTransactions();
 
         // Read Json File
         ObjectMapper objectMapper = new ObjectMapper();
@@ -35,7 +34,8 @@ public class DataLoader implements CommandLineRunner {
         });
 
         for (Transaction transaction : transactions) {
-            transactionService.saveTransaction(transaction);
+            System.out.println("Saving transaction: " + transaction.getTitle());
+            transactionsService.saveTransaction(transaction);
         }
     }
 }

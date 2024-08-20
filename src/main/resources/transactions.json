@@ -1,32 +1,372 @@
 [
   {
-    "type": "Expense",
-    "date": "2024-08-03",
-    "amount": 43.0,
-    "note": "Dinner for 3 persons"
+    "id": 1,
+    "id_category": 1,
+    "title": "Median Salary",
+    "price": 1880,
+    "id_frequency": 1,
+    "id_status": 3,
+    "next_payment": "2024-09-16",
+    "commentary": "Starting from 1.9, it will not come"
   },
   {
-    "type": "Income",
-    "date": "2024-08-01",
-    "amount": 1430.0,
-    "note": "Income from insurance"
+    "id": 2,
+    "id_category": 1,
+    "title": "Social Security",
+    "price": 1422,
+    "id_frequency": 1,
+    "id_status": 2,
+    "next_payment": "2024-09-04",
+    "commentary": null
   },
   {
-    "type": "Expense",
-    "date": "2024-08-05",
-    "amount": 98.0,
-    "note": "Fifa 25 pre-order"
+    "id": 3,
+    "id_category": 1,
+    "title": "TV allowance from wife",
+    "price": 7,
+    "id_frequency": 1,
+    "id_status": 2,
+    "next_payment": "2024-09-15",
+    "commentary": null
   },
   {
-    "type": "Expense",
-    "date": "2024-08-04",
-    "amount": 140.0,
-    "note": "Playstation Extra - year substriction"
+    "id": 4,
+    "id_category": 3,
+    "title": "iCloud 200GB",
+    "price": -2.99,
+    "id_frequency": 1,
+    "id_status": 3,
+    "next_payment": "2024-09-03",
+    "commentary": null
   },
   {
-    "type": "Expense",
-    "date": "2024-08-11",
-    "amount": 80.0,
-    "note": "Taxes for life"
+    "id": 5,
+    "id_category": 3,
+    "title": "GitHub",
+    "price": -10,
+    "id_frequency": 1,
+    "id_status": 2,
+    "next_payment": "2024-09-14",
+    "commentary": "Do I need this?"
+  },
+  {
+    "id": 6,
+    "id_category": 3,
+    "title": "Google Workspace",
+    "price": -12.71,
+    "id_frequency": 1,
+    "id_status": 2,
+    "next_payment": "2024-09-01",
+    "commentary": null
+  },
+  {
+    "id": 7,
+    "id_category": 3,
+    "title": "iCloud 2TB",
+    "price": -9.99,
+    "id_frequency": 1,
+    "id_status": 2,
+    "next_payment": "2024-08-30",
+    "commentary": "This would be nice to reduce or cancel"
+  },
+  {
+    "id": 8,
+    "id_category": 3,
+    "title": "Credit Card Payment",
+    "price": -15,
+    "id_frequency": 1,
+    "id_status": 2,
+    "next_payment": "2024-08-31",
+    "commentary": "This is the minimum payment."
+  },
+  {
+    "id": 9,
+    "id_category": 3,
+    "title": "YouTube Premium",
+    "price": -7.49,
+    "id_frequency": 1,
+    "id_status": 2,
+    "next_payment": "2024-09-16",
+    "commentary": "Primary platform for TV."
+  },
+  {
+    "id": 10,
+    "id_category": 3,
+    "title": "Internet and Mobile",
+    "price": -45,
+    "id_frequency": 1,
+    "id_status": 2,
+    "next_payment": "2024-09-20",
+    "commentary": null
+  },
+  {
+    "id": 11,
+    "id_category": 3,
+    "title": "Car Payment",
+    "price": -282.12,
+    "id_frequency": 1,
+    "id_status": 2,
+    "next_payment": "2024-09-09",
+    "commentary": null
+  },
+  {
+    "id": 12,
+    "id_category": 3,
+    "title": "Mortgage Payment",
+    "price": -598.17,
+    "id_frequency": 1,
+    "id_status": 2,
+    "next_payment": "2024-08-19",
+    "commentary": null
+  },
+  {
+    "id": 13,
+    "id_category": 3,
+    "title": "Lifeplus Accident Insurance",
+    "price": -23.99,
+    "id_frequency": 1,
+    "id_status": 2,
+    "next_payment": "2024-09-15",
+    "commentary": "This was mainly for horses"
+  },
+  {
+    "id": 14,
+    "id_category": 5,
+    "title": "Contribution to 'Joint' savings",
+    "price": -50,
+    "id_frequency": 1,
+    "id_status": 2,
+    "next_payment": "2024-09-08",
+    "commentary": "Savings for joint account"
+  },
+  {
+    "id": 15,
+    "id_category": 5,
+    "title": "Saving for Personal Pleasure",
+    "price": -20,
+    "id_frequency": 1,
+    "id_status": 1,
+    "next_payment": "2024-09-16",
+    "commentary": "It's questionable whether I need this"
+  },
+  {
+    "id": 16,
+    "id_category": 6,
+    "title": "YouTube Music",
+    "price": -9.49,
+    "id_frequency": 1,
+    "id_status": 3,
+    "next_payment": "2024-09-16",
+    "commentary": null
+  },
+  {
+    "id": 17,
+    "id_category": 6,
+    "title": "Spendee Money & Budget Tracker",
+    "price": -13.49,
+    "id_frequency": 2,
+    "id_status": 3,
+    "next_payment": "2024-10-25",
+    "commentary": null
+  },
+  {
+    "id": 18,
+    "id_category": 6,
+    "title": "InShot Video Editor",
+    "price": -17.99,
+    "id_frequency": 2,
+    "id_status": 3,
+    "next_payment": "2024-09-21",
+    "commentary": null
+  },
+  {
+    "id": 19,
+    "id_category": 6,
+    "title": "Duolingo",
+    "price": -47.99,
+    "id_frequency": 2,
+    "id_status": 2,
+    "next_payment": "2025-07-20",
+    "commentary": null
+  },
+  {
+    "id": 20,
+    "id_category": 6,
+    "title": "Pillov Sleep Tracker",
+    "price": -29.99,
+    "id_frequency": 2,
+    "id_status": 2,
+    "next_payment": "2024-11-23",
+    "commentary": "Expires on 23.11. Would be good to stop this"
+  },
+  {
+    "id": 21,
+    "id_category": 6,
+    "title": "Dolingo",
+    "price": -47.99,
+    "id_frequency": 2,
+    "id_status": 2,
+    "next_payment": "2025-07-20",
+    "commentary": "Will renew in June 2025"
+  },
+  {
+    "id": 22,
+    "id_category": 6,
+    "title": "Cartoon Weather",
+    "price": -14.99,
+    "id_frequency": 2,
+    "id_status": 2,
+    "next_payment": "2025-07-13",
+    "commentary": "Will renew in June 2025"
+  },
+  {
+    "id": 23,
+    "id_category": 6,
+    "title": "Podcasty sme.sk",
+    "price": -2.99,
+    "id_frequency": 1,
+    "id_status": 3,
+    "next_payment": "2024-09-04",
+    "commentary": "Expires on 4.9"
+  },
+  {
+    "id": 24,
+    "id_category": 6,
+    "title": "Strop Packages",
+    "price": -300,
+    "id_frequency": 1,
+    "id_status": 3,
+    "next_payment": null,
+    "commentary": "I stopped fetish"
+  },
+  {
+    "id": 25,
+    "id_category": 6,
+    "title": "Voyo",
+    "price": -5.99,
+    "id_frequency": 1,
+    "id_status": 3,
+    "next_payment": null,
+    "commentary": "Ended on 9.12"
+  },
+  {
+    "id": 26,
+    "id_category": 6,
+    "title": "ChatGPT Plus",
+    "price": -22.99,
+    "id_frequency": 1,
+    "id_status": 2,
+    "next_payment": "2024-08-19",
+    "commentary": null
+  },
+  {
+    "id": 27,
+    "id_category": 6,
+    "title": "YouTube Vortex",
+    "price": -7.99,
+    "id_frequency": 1,
+    "id_status": 2,
+    "next_payment": "2024-09-03",
+    "commentary": null
+  },
+  {
+    "id": 28,
+    "id_category": 6,
+    "title": "YouTube Molda22",
+    "price": -1.99,
+    "id_frequency": 1,
+    "id_status": 3,
+    "next_payment": null,
+    "commentary": "Expires on 20.11.2023"
+  },
+  {
+    "id": 29,
+    "id_category": 6,
+    "title": "Wallet: Budget Expense Tracker",
+    "price": -19.99,
+    "id_frequency": 2,
+    "id_status": 3,
+    "next_payment": null,
+    "commentary": "Probably to cancel on 15.11.2023"
+  },
+  {
+    "id": 30,
+    "id_category": 6,
+    "title": "Disney+",
+    "price": -70,
+    "id_frequency": 2,
+    "id_status": 3,
+    "next_payment": null,
+    "commentary": "Expired on 16.6.2023"
+  },
+  {
+    "id": 31,
+    "id_category": 6,
+    "title": "Sky Showtime",
+    "price": -5.99,
+    "id_frequency": 1,
+    "id_status": 3,
+    "next_payment": null,
+    "commentary": "Subscription cancelled on 2.11.2023"
+  },
+  {
+    "id": 32,
+    "id_category": 6,
+    "title": "Playstation Plus",
+    "price": -151.99,
+    "id_frequency": 2,
+    "id_status": 2,
+    "next_payment": "2025-07-31",
+    "commentary": "Valid until 2025"
+  },
+  {
+    "id": 33,
+    "id_category": 6,
+    "title": "Gamepass Ultimate",
+    "price": -151.6,
+    "id_frequency": 2,
+    "id_status": 3,
+    "next_payment": null,
+    "commentary": "I won't pay for this anymore"
+  },
+  {
+    "id": 34,
+    "id_category": 6,
+    "title": "Telly",
+    "price": -8.96,
+    "id_frequency": 1,
+    "id_status": 2,
+    "next_payment": "2024-09-01",
+    "commentary": "Telly.cz. For July (paid in August), there was a double payment"
+  },
+  {
+    "id": 35,
+    "id_category": 8,
+    "title": "Packages",
+    "price": -200,
+    "id_frequency": 1,
+    "id_status": 3,
+    "next_payment": null,
+    "commentary": "I stopped fetish"
+  },
+  {
+    "id": 36,
+    "id_category": 8,
+    "title": "Chat+",
+    "price": -3.99,
+    "id_frequency": 1,
+    "id_status": 2,
+    "next_payment": "2024-09-14",
+    "commentary": null
+  },
+  {
+    "id": 37,
+    "id_category": 8,
+    "title": "Typewise Custom Keyboard",
+    "price": -8.49,
+    "id_frequency": 2,
+    "id_status": 3,
+    "next_payment": "2024-11-06",
+    "commentary": null
   }
 ]
