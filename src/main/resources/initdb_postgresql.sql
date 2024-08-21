@@ -1,41 +1,31 @@
 -- Initialize the SQLite database schema for Finance Tracker Application
 
--- Drop views
-DROP VIEW IF EXISTS TransactionsView;
-
--- Drop tables if they exist to allow re-runnability
-DROP TABLE IF EXISTS Transactions;
-DROP TABLE IF EXISTS Categories;
-DROP TABLE IF EXISTS TransactionTypes;
-DROP TABLE IF EXISTS Frequency;
-DROP TABLE IF EXISTS Status;
-
 -- Creating the TransactionTypes table
-CREATE TABLE TransactionTypes (
+CREATE OR REPLACE TABLE TransactionTypes (
     ID SERIAL PRIMARY KEY,
     Type VARCHAR NOT NULL UNIQUE -- Type of the transaction (Income, Expense)
 );
 
 -- Creating the Categories table
-CREATE TABLE Categories (
+CREATE OR REPLACE TABLE Categories (
     ID SERIAL PRIMARY KEY,
     Name VARCHAR UNIQUE -- Category of the transaction (e.g., Income, Necessary, Important, etc.)
 );
 
 -- Creating the Frequency table
-CREATE TABLE Frequency (
+CREATE OR REPLACE TABLE Frequency (
     ID SERIAL PRIMARY KEY,
     Frequency_Type VARCHAR NOT NULL UNIQUE -- Frequency of the transaction (Monthly, Yearly)
 );
 
 -- Creating the Status table
-CREATE TABLE Status (
+CREATE OR REPLACE TABLE Status (
     ID SERIAL PRIMARY KEY,
     Status_Name VARCHAR NOT NULL UNIQUE -- Status of the transaction (Disabled, Active, Suspended, Cancelled)
 );
 
 -- Creating the Transactions table
-CREATE TABLE Transactions (
+CREATE OR REPLACE TABLE Transactions (
     ID SERIAL PRIMARY KEY,
     ID_Category INTEGER NOT NULL, -- Foreign key to Categories table
     Title VARCHAR NOT NULL, -- Title of the transaction (e.g., mortgage payment, car installment payment)
@@ -48,6 +38,43 @@ CREATE TABLE Transactions (
     FOREIGN KEY (ID_Frequency) REFERENCES Frequency(ID),
     FOREIGN KEY (ID_Status) REFERENCES Status(ID)
 );
+
+-- Creating the function for montly price
+CREATE OR REPLACE FUNCTION get_adjusted_price(
+    p_price NUMERIC,
+    p_status TEXT,
+	p_frequency TEXT
+) 
+RETURNS NUMERIC AS $$
+BEGIN
+	/* Early return when item is not active */
+    IF lower(p_status) <> 'active' THEN RETURN ROUND(0, 2); END IF;
+    IF lower(p_frequency) = 'yearly' THEN
+		RETURN round(p_price / 12, 2);
+	ELSE
+		RETURN round(p_price, 2);
+	END IF;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE VIEW transactionsview AS
+	select 
+	    tr.id, 
+	    tr.title,
+	    tr.price,
+		get_adjusted_price(tr.price, st.status_name, fr.frequency_type) "monthly_price",
+	    ca.name as "category",
+	    st.status_name as "status",
+	    fr.frequency_type as "frequency",
+	    tr.next_payment,
+	    tr.commentary as "comment"
+	from 
+	    transactions tr 
+	inner join categories ca on tr.id_category = ca.id
+	inner join status st on tr.id_status = st.id
+	inner join frequency fr on tr.id_frequency = fr.id;
+
+-- Inserting data
 
 BEGIN TRANSACTION;
 -- Inserting default data into the Frequency table
@@ -130,44 +157,4 @@ INSERT INTO Transactions (ID_Category, Title, Price, ID_Frequency, ID_Status, Ne
 -- Uncategorized (empty category in CSV)
 ((SELECT ID FROM Categories WHERE Name = 'Other'), 'Typewise Custom Keyboard', -8.49, (SELECT ID FROM Frequency WHERE Frequency_Type = 'Yearly'), (SELECT ID FROM Status WHERE Status_Name = 'Suspended'), '2024-11-06', NULL);
 COMMIT;
-*/
-
-CREATE VIEW TransactionsView AS
-SELECT
-    ID,
-    ID_Category,
-    Title,
-    Price,
-    ID_Frequency,
-    ID_Status,
-    Next_Payment,
-    Commentary,
-    
-    -- Calculate Monthly_Cost
-    ROUND(CASE 
-        WHEN (ID_Status = (SELECT ID FROM Status WHERE Status_Name = 'Active') AND Price < 0) THEN
-            CASE 
-                WHEN ID_Frequency = (SELECT ID FROM Frequency WHERE Frequency_Type = 'Yearly') THEN Price / 12
-                ELSE Price
-            END
-        WHEN (ID_Status = (SELECT ID FROM Status WHERE Status_Name = 'Active') AND Price > 0) THEN
-            CASE 
-                WHEN ID_Frequency = (SELECT ID FROM Frequency WHERE Frequency_Type = 'Yearly') THEN Price * 12
-                ELSE Price
-            END
-        ELSE 0
-    END) AS Monthly_Cost,
-
-    -- Calculate Due_Next_Payment
-    ROUND(CASE 
-        WHEN (ID_Status = (SELECT ID FROM Status WHERE Status_Name = 'Active') AND Next_Payment IS NOT NULL) THEN
-            (Next_Payment - current_date + 1)
-        ELSE 0
-    END) AS Due_Next_Payment
-
-FROM Transactions;
-
-/*SELECT json_agg(t) FROM Transactions t;
-
-select * from Categories;
 */
